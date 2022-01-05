@@ -69,4 +69,7 @@ void main(List<String> arguments) async {
   await createDependencies(structureSettings, flutterRoot);
 
   createSample(projectName: projectName, dir: flutterRoot + 'lib/');
+
+  print('Finished generating! Thanks for your patience ');
+  await Future.delayed(Duration(seconds: 1));
 }
