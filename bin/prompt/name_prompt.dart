@@ -5,8 +5,9 @@ import 'package:interact/interact.dart';
 import '../utils.dart';
 
 String? namePrompt() {
-  final name = Input(
-    prompt: 'Please insert your project name:',
+  final name = Input.withTheme(
+    prompt: 'Please insert your project name',
+    theme: Theme.basicTheme,
   ).interact().toLowerCase().replaceAll(' ', '_');
 
   final targetDir = FileSystemEntity.typeSync('./' + name);

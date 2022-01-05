@@ -11,26 +11,30 @@ const fastStructure = StructureSchema(
 
 StructureSchema structurePrompt() {
   final structureOptions = ['Complete Structure', 'Basic Structure'];
-  final structureSelection = Select(
-    prompt: 'Which directory structure do you want?',
+  final structureSelection = Select.withTheme(
+    prompt: 'Which directory structure you want?',
     options: structureOptions,
     initialIndex: 1,
+    theme: Theme.basicTheme,
   ).interact();
 
-  final wantGitSafe = Confirm(
+  final wantGitSafe = Confirm.withTheme(
     prompt: 'Do you want to generate `.gitkeep` files inside each '
         'folder for versioning purposes?',
     defaultValue: false,
+    theme: Theme.basicTheme,
   ).interact();
 
-  final wantHooks = Confirm(
+  final wantHooks = Confirm.withTheme(
     prompt: 'Do you want to use Flutter Hooks with Riverpod?',
     defaultValue: false,
+    theme: Theme.basicTheme,
   ).interact();
 
-  final wantDependencies = Confirm(
+  final wantDependencies = Confirm.withTheme(
     prompt: 'Do you want to add default SCP dependencies?',
     defaultValue: false,
+    theme: Theme.basicTheme,
   ).interact();
 
   if (!wantDependencies) {
@@ -50,15 +54,17 @@ StructureSchema structurePrompt() {
     'localstore',
     'cached_network_image',
   ];
-  final storageSelection = MultiSelect(
-    prompt: 'Select all storage related packages you wish to use:',
+  final storageSelection = MultiSelect.withTheme(
+    prompt: 'Select all storage related packages you wish to use',
     options: storageOptions,
+    theme: Theme.basicTheme,
   ).interact();
 
   final httpOptions = ['None', 'http', 'dio'];
-  final httpSelection = Select(
-    prompt: 'Which http package do you want to add?',
+  final httpSelection = Select.withTheme(
+    prompt: 'Select the http package you want to add',
     options: httpOptions,
+    theme: Theme.basicTheme,
   ).interact();
 
   return StructureSchema(
