@@ -1,6 +1,6 @@
 name: scp8
 description: Dart CLI to easily start a Flutter project following SCP Architecture.
-version: 1.2.3
+version: 1.2.4
 
 environment:
   sdk: '>=2.15.1 <3.0.0'

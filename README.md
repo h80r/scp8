@@ -31,6 +31,10 @@ This command uses a default configuration for your project, needing only the pro
 
 ## Additional information
 
+### Updating
+
+To update your program, simply run `dart pub global activate -s git https://github.com/h80r/scp8.git` again.
+
 ### `scp -f` directory structure
 
 ```

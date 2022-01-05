@@ -1,3 +1,7 @@
+## 1.2.4
+
+- Add update instructions to `README.md`.
+
 ## 1.2.3
 
 - Add message on finish.
