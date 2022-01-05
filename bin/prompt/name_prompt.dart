@@ -4,10 +4,10 @@ import 'package:interact/interact.dart';
 
 import '../utils.dart';
 
-String? namePrompt() {
+String? namePrompt(bool isColorful) {
   final name = Input.withTheme(
     prompt: 'Please insert your project name',
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact().toLowerCase().replaceAll(' ', '_');
 
   final targetDir = FileSystemEntity.typeSync('./' + name);
@@ -18,7 +18,7 @@ String? namePrompt() {
       defaultValue: true,
     ).interact();
 
-    return tryAgain ? namePrompt() : null;
+    return tryAgain ? namePrompt(isColorful) : null;
   }
 
   final validation = validateProjectName(name);
@@ -28,7 +28,7 @@ String? namePrompt() {
       defaultValue: true,
     ).interact();
 
-    return tryAgain ? namePrompt() : null;
+    return tryAgain ? namePrompt(isColorful) : null;
   }
 
   return name;

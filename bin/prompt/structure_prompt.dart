@@ -9,32 +9,32 @@ const fastStructure = StructureSchema(
   willAddDependencies: false,
 );
 
-StructureSchema structurePrompt() {
+StructureSchema structurePrompt(bool isColorful) {
   final structureOptions = ['Complete Structure', 'Basic Structure'];
   final structureSelection = Select.withTheme(
     prompt: 'Which directory structure you want?',
     options: structureOptions,
     initialIndex: 1,
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact();
 
   final wantGitSafe = Confirm.withTheme(
     prompt: 'Do you want to generate `.gitkeep` files inside each '
         'folder for versioning purposes?',
     defaultValue: false,
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact();
 
   final wantHooks = Confirm.withTheme(
     prompt: 'Do you want to use Flutter Hooks with Riverpod?',
     defaultValue: false,
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact();
 
   final wantDependencies = Confirm.withTheme(
     prompt: 'Do you want to add default SCP dependencies?',
     defaultValue: false,
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact();
 
   if (!wantDependencies) {
@@ -57,14 +57,14 @@ StructureSchema structurePrompt() {
   final storageSelection = MultiSelect.withTheme(
     prompt: 'Select all storage related packages you wish to use',
     options: storageOptions,
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact();
 
   final httpOptions = ['None', 'http', 'dio'];
   final httpSelection = Select.withTheme(
     prompt: 'Select the http package you want to add',
     options: httpOptions,
-    theme: Theme.basicTheme,
+    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
   ).interact();
 
   return StructureSchema(

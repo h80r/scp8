@@ -50,8 +50,9 @@ void main(List<String> arguments) async {
     return;
   }
 
-  final structureSettings = args['fast'] ? fastStructure : structurePrompt();
-  final projectName = namePrompt();
+  final structureSettings =
+      args['fast'] ? fastStructure : structurePrompt(args['color']);
+  final projectName = namePrompt(args['color']);
   if (projectName == null) return;
 
   await runProcess(
