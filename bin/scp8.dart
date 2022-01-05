@@ -10,14 +10,25 @@ import 'prompt/structure_prompt.dart';
 import 'utils.dart';
 
 void main(List<String> arguments) async {
-  final argumentsParser = ArgParser()
+  final argParser = ArgParser()
     ..addFlag(
       'fast',
       abbr: 'f',
       negatable: false,
+      help: 'Use this flag if you want to skip the setup prompt.',
     );
 
-  final args = argumentsParser.parse(arguments);
+  argParser.addFlag(
+    'help',
+    abbr: 'h',
+    negatable: false,
+    help: 'Show this message.',
+    callback: (_) => print('scp usage instructions:\n\n' + argParser.usage),
+  );
+
+  final args = argParser.parse(arguments);
+
+  if (args['help']) return;
 
   print(
     'Hello! This simple tool will setup your Flutter project following the '
