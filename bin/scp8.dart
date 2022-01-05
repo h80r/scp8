@@ -16,19 +16,20 @@ void main(List<String> arguments) async {
       abbr: 'f',
       negatable: false,
       help: 'Use this flag if you want to skip the setup prompt.',
+    )
+    ..addFlag(
+      'help',
+      abbr: 'h',
+      negatable: false,
+      help: 'Show this message.',
     );
-
-  argParser.addFlag(
-    'help',
-    abbr: 'h',
-    negatable: false,
-    help: 'Show this message.',
-    callback: (_) => print('scp usage instructions:\n\n' + argParser.usage),
-  );
 
   final args = argParser.parse(arguments);
 
-  if (args['help']) return;
+  if (args['help']) {
+    print('scp usage instructions:\n\n' + argParser.usage);
+    return;
+  }
 
   print(
     'Hello! This simple tool will setup your Flutter project following the '
