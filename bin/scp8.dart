@@ -22,6 +22,12 @@ void main(List<String> arguments) async {
       abbr: 'h',
       negatable: false,
       help: 'Show this message.',
+    )
+    ..addFlag(
+      'color',
+      abbr: 'c',
+      negatable: false,
+      help: 'Enable colorful prompt for setup.',
     );
 
   final args = argParser.parse(arguments);
