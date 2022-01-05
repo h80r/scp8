@@ -20,7 +20,7 @@ void createSample({required String projectName, required String dir}) {
     'main.dart',
     content: mainContent.replaceAll('project_name', projectName),
   );
-  addFile('schema/home.dart', content: schemaContent);
+  addFile('schema/canvas/home.dart', content: schemaContent);
   addFile(
     'canvas/home.dart',
     content: canvasContent.replaceAll('project_name', projectName),
@@ -152,7 +152,7 @@ class HomeCanvas extends ConsumerWidget {
 
 const providerContent = '''
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:project_name/schema/home.dart';
+import 'package:project_name/schema/canvas/home.dart';
 
 // Providers are declared as globals to be watched.
 final homeProvider = StateNotifierProvider<HomeNotifier, HomeSchema>((ref) {

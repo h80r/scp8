@@ -62,10 +62,12 @@ sample_project
 │   │   │   └── home.dart
 │   │   └── .gitkeep
 │   ├── schema
+│   │   ├── canvas
+│   │   │   ├── home.dart
+│   │   │   └── .gitkeep
 │   │   ├── enums
 │   │   │   └── .gitkeep
-│   │   ├── .gitkeep
-│   │   └── home.dart
+│   │   └── .gitkeep
 │   └── utils
 │       └── .gitkeep
 ├── linux

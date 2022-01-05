@@ -1,3 +1,7 @@
+## 1.2.5
+
+- Include `schema/canvas` on directory generation.
+
 ## 1.2.4
 
 - Add update instructions to `README.md`.

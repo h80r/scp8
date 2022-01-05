@@ -38,6 +38,7 @@ void createFolders(StructureSchema settings, String dir) {
   addFolder('provider');
   addFolder('components', parent: 'canvas');
   addFolder('canvas', parent: 'provider');
+  addFolder('canvas', parent: 'schema');
 
   if (settings.wantFullStructure) {
     addFolder('enums', parent: 'schema');
