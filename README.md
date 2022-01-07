@@ -53,21 +53,16 @@ sample_project
 │   ├── canvas
 │   │   ├── components
 │   │   │   └── .gitkeep
-│   │   ├── .gitkeep
 │   │   └── home.dart
 │   ├── main.dart
 │   ├── provider
-│   │   ├── canvas
-│   │   │   ├── .gitkeep
-│   │   │   └── home.dart
-│   │   └── .gitkeep
+│   │   └── canvas
+│   │       └── home.dart
 │   ├── schema
 │   │   ├── canvas
-│   │   │   ├── home.dart
-│   │   │   └── .gitkeep
-│   │   ├── enums
-│   │   │   └── .gitkeep
-│   │   └── .gitkeep
+│   │   │   └── home.dart
+│   │   └── enums
+│   │       └── .gitkeep
 │   └── utils
 │       └── .gitkeep
 ├── linux

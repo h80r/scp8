@@ -70,3 +70,13 @@ const _packageDependencies = <String>{
   'watcher',
   'yaml',
 };
+
+String parseSampleContent(
+  String content, {
+  required String projectName,
+  required bool useHooks,
+}) {
+  return content
+      .replaceAll('project_name', projectName)
+      .replaceAll('riverpod', useHooks ? 'hooks_riverpod' : 'flutter_riverpod');
+}

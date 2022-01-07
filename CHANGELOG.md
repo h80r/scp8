@@ -1,3 +1,9 @@
+## 1.2.6
+
+- Stop `.gitkeep` generation when not needed.
+- Update `README.md` directory structure to reflect changes.
+- Update sample code to follow `hooks_riverpod` usage.
+
 ## 1.2.5
 
 - Include `schema/canvas` on directory generation.

@@ -33,7 +33,7 @@ void createSample({required String projectName, required String dir}) {
 
 const mainContent = '''
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:project_name/canvas/home.dart';
 
 void main() {
@@ -80,7 +80,7 @@ class HomeSchema {
 
 const canvasContent = '''
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:project_name/provider/canvas/home.dart';
 
 class HomeCanvas extends ConsumerWidget {
@@ -151,7 +151,7 @@ class HomeCanvas extends ConsumerWidget {
 ''';
 
 const providerContent = '''
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:project_name/schema/canvas/home.dart';
 
 // Providers are declared as globals to be watched.

@@ -12,7 +12,7 @@ void createFolders(StructureSchema settings, String dir) {
     }
   }
 
-  void addFolder(String name, {String? parent}) {
+  void addFolder(String name, {String? parent, bool isSafe = true}) {
     final hasParent = parent != null;
     final trailingText = hasParent ? ' inside $parent' : '';
 
@@ -29,19 +29,19 @@ void createFolders(StructureSchema settings, String dir) {
 
     folder.createSync();
 
-    addGitSafe(folder.path);
+    if (!isSafe) addGitSafe(folder.path);
     spinner.done();
   }
 
   addFolder('schema');
   addFolder('canvas');
   addFolder('provider');
-  addFolder('components', parent: 'canvas');
+  addFolder('components', parent: 'canvas', isSafe: false);
   addFolder('canvas', parent: 'provider');
   addFolder('canvas', parent: 'schema');
 
   if (settings.wantFullStructure) {
-    addFolder('enums', parent: 'schema');
-    addFolder('utils');
+    addFolder('enums', parent: 'schema', isSafe: false);
+    addFolder('utils', isSafe: false);
   }
 }
