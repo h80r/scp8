@@ -80,3 +80,8 @@ String parseSampleContent(
       .replaceAll('project_name', projectName)
       .replaceAll('riverpod', useHooks ? 'hooks_riverpod' : 'flutter_riverpod');
 }
+
+List<String>? parseMultiSelect(List<int> selections, List<String> options) {
+  if (selections.isEmpty) return null;
+  return [for (final id in selections) options[id]];
+}

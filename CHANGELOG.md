@@ -1,3 +1,7 @@
+## 1.3.0
+
+- Added a plethora of new optional dependencies to choose from.
+
 ## 1.2.6
 
 - Stop `.gitkeep` generation when not needed.

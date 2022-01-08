@@ -2,13 +2,20 @@ import '../schemas.dart';
 import '../utils.dart';
 
 Future<void> createDependencies(StructureSchema settings, String dir) async {
-  Future<void> addDependency(String package) async {
+  Future<void> addDependency(String? package) async {
+    if (package == null) return;
     return await runProcess(
       'flutter pub add $package',
       icon: '',
       prompt: (done) => done ? '$package added' : 'Adding $package',
       dir: dir,
     );
+  }
+
+  Future<void> addList(List<String>? packages) async {
+    for (final package in packages ?? []) {
+      await addDependency(package);
+    }
   }
 
   await addDependency(
@@ -21,12 +28,11 @@ Future<void> createDependencies(StructureSchema settings, String dir) async {
 
   if (!settings.willAddDependencies) return;
 
-  for (final dependency in settings.storageDependencies ?? []) {
-    await addDependency(dependency);
-  }
-
-  final httpDependency = settings.httpDependency;
-  if (httpDependency != null) {
-    await addDependency(httpDependency);
-  }
+  await addList(settings.interfaceDependencies);
+  await addList(settings.serviceDependencies);
+  await addList(settings.storageDependencies);
+  await addDependency(settings.httpDependency);
+  await addList(settings.securityDependencies);
+  await addList(settings.utilityDependencies);
+  await addList(settings.developmentDependencies);
 }
