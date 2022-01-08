@@ -1,3 +1,7 @@
+## 1.3.1
+
+- Fix `1.2.6` _riverpod_ dependency not being imported properly.
+
 ## 1.3.0
 
 - Added a plethora of new optional dependencies to choose from.

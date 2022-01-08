@@ -2,7 +2,14 @@ import 'dart:io';
 
 import 'package:interact/interact.dart';
 
-void createSample({required String projectName, required String dir}) {
+import '../schemas.dart';
+import '../utils.dart';
+
+void createSample({
+  required String projectName,
+  required String dir,
+  required StructureSchema settings,
+}) {
   void addFile(String path, {required String content}) {
     final spinner = Spinner(
       icon: '',
@@ -18,16 +25,29 @@ void createSample({required String projectName, required String dir}) {
 
   addFile(
     'main.dart',
-    content: mainContent.replaceAll('project_name', projectName),
+    content: parseSampleContent(
+      mainContent,
+      projectName: projectName,
+      useHooks: settings.wantHooks,
+    ),
+    // content: mainContent.replaceAll('project_name', projectName),
   );
   addFile('schema/canvas/home.dart', content: schemaContent);
   addFile(
     'canvas/home.dart',
-    content: canvasContent.replaceAll('project_name', projectName),
+    content: parseSampleContent(
+      canvasContent,
+      projectName: projectName,
+      useHooks: settings.wantHooks,
+    ),
   );
   addFile(
     'provider/canvas/home.dart',
-    content: providerContent.replaceAll('project_name', projectName),
+    content: parseSampleContent(
+      providerContent,
+      projectName: projectName,
+      useHooks: settings.wantHooks,
+    ),
   );
 }
 
