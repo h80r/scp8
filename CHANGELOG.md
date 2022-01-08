@@ -1,3 +1,7 @@
+## 1.3.2
+
+- Simplify `structure_prompt`.
+
 ## 1.3.1
 
 - Fix `1.2.6` _riverpod_ dependency not being imported properly.

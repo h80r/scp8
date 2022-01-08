@@ -11,32 +11,39 @@ const fastStructure = StructureSchema(
 );
 
 StructureSchema structurePrompt(bool isColorful) {
+  int select(String name, List<String> options, [int initialIndex = 0]) {
+    return Select.withTheme(
+      prompt: 'Select which $name you want',
+      options: options,
+      theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
+      initialIndex: initialIndex,
+    ).interact();
+  }
+
+  bool confirm(String prompt) {
+    return Confirm.withTheme(
+      theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
+      prompt: 'Do you want to $prompt?',
+      defaultValue: false,
+    ).interact();
+  }
+
+  List<int> multiSelect(String name, List<String> options) {
+    return MultiSelect.withTheme(
+      prompt: 'Select all $name related packages you wish to use',
+      options: options,
+      theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
+    ).interact();
+  }
+
   final structureOptions = ['Complete Structure', 'Basic Structure'];
-  final structureSelection = Select.withTheme(
-    prompt: 'Which directory structure you want?',
-    options: structureOptions,
-    initialIndex: 1,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final structureSelection = select('directory structure', structureOptions, 1);
 
-  final wantGitSafe = Confirm.withTheme(
-    prompt: 'Do you want to generate `.gitkeep` files inside each '
-        'folder for versioning purposes?',
-    defaultValue: false,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final wantGitSafe = confirm('generate `.gitkeep` files inside empty folders');
 
-  final wantHooks = Confirm.withTheme(
-    prompt: 'Do you want to use Flutter Hooks with Riverpod?',
-    defaultValue: false,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final wantHooks = confirm('use Flutter Hooks with Riverpod');
 
-  final wantDependencies = Confirm.withTheme(
-    prompt: 'Do you want to add default SCP dependencies?',
-    defaultValue: false,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final wantDependencies = confirm('add default SCP dependencies');
 
   if (!wantDependencies) {
     return StructureSchema(
@@ -54,22 +61,10 @@ StructureSchema structurePrompt(bool isColorful) {
     'image_picker',
     'intro_slider',
   ];
-  final interfaceSelection = MultiSelect.withTheme(
-    prompt: 'Select all UI related packages you wish to use',
-    options: interfaceOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final interfaceSelection = multiSelect('UI', interfaceOptions);
 
-  final serviceOptions = [
-    'awesome_notifications',
-    'geolocator',
-    'workmanager',
-  ];
-  final serviceSelection = MultiSelect.withTheme(
-    prompt: 'Select all service related packages you wish to use',
-    options: serviceOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final serviceOptions = ['awesome_notifications', 'geolocator', 'workmanager'];
+  final serviceSelection = multiSelect('service', serviceOptions);
 
   final storageOptions = [
     'cached_network_image',
@@ -80,18 +75,10 @@ StructureSchema structurePrompt(bool isColorful) {
     'path_provider',
     'shared_preferences',
   ];
-  final storageSelection = MultiSelect.withTheme(
-    prompt: 'Select all storage related packages you wish to use',
-    options: storageOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final storageSelection = multiSelect('storage', storageOptions);
 
   final httpOptions = ['None', 'dio', 'http'];
-  final httpSelection = Select.withTheme(
-    prompt: 'Select the http package you want to add',
-    options: httpOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final httpSelection = select('http package', httpOptions);
 
   final securityOptions = [
     'local_auth',
@@ -100,11 +87,7 @@ StructureSchema structurePrompt(bool isColorful) {
     'secure_application',
     'trust_fall',
   ];
-  final securitySelection = MultiSelect.withTheme(
-    prompt: 'Select all security related packages you wish to use',
-    options: securityOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final securitySelection = multiSelect('security', securityOptions);
 
   final utilityOptions = [
     'fl_chart',
@@ -112,18 +95,10 @@ StructureSchema structurePrompt(bool isColorful) {
     'package_info',
     'url_launcher',
   ];
-  final utilitySelection = MultiSelect.withTheme(
-    prompt: 'Select all utility packages you wish to use',
-    options: utilityOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final utilitySelection = multiSelect('utility', utilityOptions);
 
   final developmentOptions = ['dartx', 'device_preview', 'faker', 'logger'];
-  final developmentSelection = MultiSelect.withTheme(
-    prompt: 'Select all development related packages you wish to use',
-    options: developmentOptions,
-    theme: isColorful ? Theme.colorfulTheme : Theme.basicTheme,
-  ).interact();
+  final developmentSelection = multiSelect('development', developmentOptions);
 
   return StructureSchema(
     wantFullStructure: structureSelection == 0,
