@@ -1,3 +1,7 @@
+## 1.3.3
+
+- Include `nanoid` as optional dependency.
+
 ## 1.3.2
 
 - Simplify `structure_prompt`.

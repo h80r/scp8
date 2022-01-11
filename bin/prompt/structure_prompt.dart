@@ -92,6 +92,7 @@ StructureSchema structurePrompt(bool isColorful) {
   final utilityOptions = [
     'fl_chart',
     'get_it',
+    'nanoid',
     'package_info',
     'url_launcher',
   ];
